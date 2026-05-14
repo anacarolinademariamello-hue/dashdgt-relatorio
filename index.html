@@ -3,312 +3,285 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>@dashdgt — Análise Instagram · Dash Digital</title>
+<title>Relat&oacute;rio Instagram &#8212; @dashdgt | Dash Digital</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
 <style>
-:root{--bg:#f0f3f8;--card:#fff;--card2:#f7f9fc;--border:rgba(0,63,124,0.12);--p:#003f7c;--p2:#1a5a9a;--pl:rgba(0,63,124,0.08);--a:#f8b940;--ad:#d99a20;--al:rgba(248,185,64,0.13);--tx:#0d1f35;--sub:#4a5568;--mu:#8896a8;--gr:#0a7a55;--re:#9b1c1c;--am:#b45309;--amg:rgba(180,83,9,0.09)}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--tx);font-family:'Segoe UI',system-ui,sans-serif;font-size:14px;line-height:1.6}
-/* HEADER */
-.hdr{background:linear-gradient(135deg,#003f7c,#1a5a9a 65%,#0d4a8a);padding:40px 32px 36px;position:relative;overflow:hidden}
-.hdr::before{content:'';position:absolute;top:-80px;right:-60px;width:380px;height:380px;background:radial-gradient(circle,rgba(248,185,64,0.18),transparent 65%);pointer-events:none}
-.hi{max-width:1200px;margin:0 auto;position:relative;z-index:1}
-.ht{display:flex;align-items:flex-start;gap:24px;flex-wrap:wrap}
-.av{width:80px;height:80px;border-radius:50%;background:linear-gradient(135deg,#f8b940,#ffd070);display:flex;align-items:center;justify-content:center;font-size:36px;flex-shrink:0;box-shadow:0 0 28px rgba(248,185,64,0.45)}
-.ph{font-size:12px;color:rgba(255,255,255,0.6);text-transform:uppercase;letter-spacing:.07em;font-weight:700;margin-bottom:3px}
-.pn{font-size:27px;font-weight:800;color:#fff;margin-bottom:5px}
-.pb{font-size:13px;color:rgba(255,255,255,0.75);max-width:520px;border-left:3px solid rgba(248,185,64,.7);padding-left:12px;margin-bottom:11px}
-.ptags{display:flex;gap:7px;flex-wrap:wrap}
-.tag{padding:3px 11px;border-radius:20px;font-size:11px;font-weight:700;background:rgba(255,255,255,.13);border:1px solid rgba(255,255,255,.22);color:#fff}
-.tag.a{background:rgba(248,185,64,.22);border-color:rgba(248,185,64,.5);color:#f8b940}
-.hs{display:flex;gap:26px;margin-top:26px;flex-wrap:wrap}
-.hsi{text-align:center}
-.hsv{font-size:21px;font-weight:800;color:#fff}
-.hsl{font-size:10px;color:rgba(255,255,255,.55);text-transform:uppercase;letter-spacing:.05em}
-.hsep{width:1px;background:rgba(255,255,255,.18);align-self:stretch}
-.pbadge{display:inline-flex;align-items:center;gap:6px;background:rgba(248,185,64,.18);border:1px solid rgba(248,185,64,.4);color:#f8b940;padding:5px 13px;border-radius:20px;font-size:11px;font-weight:700;margin-top:18px}
-/* LAYOUT */
-.wrap{max-width:1200px;margin:0 auto;padding:28px 24px}
-.st{font-size:11px;font-weight:700;color:var(--p);text-transform:uppercase;letter-spacing:.1em;margin-bottom:16px;display:flex;align-items:center;gap:8px}
-.st::after{content:'';flex:1;height:1px;background:var(--border)}
-/* KPI */
-.kg{display:grid;grid-template-columns:repeat(auto-fill,minmax(155px,1fr));gap:13px;margin-bottom:26px}
-.kp{background:var(--card);border-radius:14px;padding:17px 19px;border:1px solid var(--border);position:relative;overflow:hidden;box-shadow:0 2px 7px rgba(0,63,124,.05)}
-.kp::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;border-radius:14px 14px 0 0}
-.kp.n1::before{background:var(--p)}.kp.n2::before{background:var(--p2)}.kp.a1::before{background:var(--a)}.kp.a2::before{background:var(--ad)}.kp.g::before{background:#10b981}.kp.v::before{background:#6366f1}
-.ki{font-size:19px;margin-bottom:7px}
-.kv{font-size:25px;font-weight:800;color:var(--tx);line-height:1;margin-bottom:3px}
-.kl{font-size:11px;color:var(--mu);text-transform:uppercase;letter-spacing:.05em;font-weight:600}
-.ks{font-size:11px;margin-top:5px;font-weight:600}
-.sup{color:var(--gr)}.swn{color:var(--am)}.sn{color:var(--mu)}.sdn{color:var(--re)}
-/* OBS CARD */
-.obs{background:linear-gradient(135deg,var(--pl),rgba(248,185,64,.07));border:1.5px solid rgba(0,63,124,.18);border-radius:14px;padding:20px 24px;margin-bottom:26px}
-.obs-title{font-size:13px;font-weight:800;color:var(--p);margin-bottom:7px}
-.obs-body{font-size:13px;color:var(--sub);line-height:1.65}
-/* CARDS */
-.g2{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
-.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:18px;margin-bottom:24px}
-@media(max-width:900px){.g2,.g3{grid-template-columns:1fr}}
-.cd{background:var(--card);border-radius:14px;padding:20px;border:1px solid var(--border);box-shadow:0 2px 7px rgba(0,63,124,.05);margin-bottom:24px}
-.cd.nm{margin-bottom:0}
-.ct{font-size:13px;font-weight:700;color:var(--tx);margin-bottom:3px}
-.cs{font-size:11px;color:var(--mu);margin-bottom:16px}
-/* POSTS TABLE */
-.tbl{width:100%;border-collapse:collapse;font-size:12px}
-.tbl th{background:var(--pl);color:var(--p);font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;padding:9px 11px;text-align:left;border-bottom:2px solid var(--border)}
-.tbl td{padding:10px 11px;border-bottom:1px solid var(--border);vertical-align:middle}
-.tbl tr:last-child td{border-bottom:none}
-.tbl tr:hover td{background:var(--pl)}
-.mt{display:inline-flex;align-items:center;gap:3px;padding:3px 8px;border-radius:10px;font-size:10px;font-weight:700;text-transform:uppercase}
-.mr{background:var(--pl);color:var(--p)}.mi{background:var(--al);color:#9a6800}.mc{background:rgba(99,102,241,.1);color:#4338ca}
-.eb{height:6px;border-radius:3px;background:linear-gradient(90deg,var(--p),var(--a));display:inline-block;vertical-align:middle;margin-right:6px}
-.pl{color:var(--p);text-decoration:none;font-weight:600}.pl:hover{text-decoration:underline}
-/* ANÁLISE ESTRATÉGICA */
-.ag{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-bottom:24px}
-@media(max-width:700px){.ag{grid-template-columns:1fr}}
-.acd{background:var(--card);border-radius:14px;padding:20px;border:1px solid var(--border)}
-.acd.str{border-top:4px solid #10b981}
-.acd.atn{border-top:4px solid var(--am)}
-.act{font-size:13px;font-weight:800;margin-bottom:12px}
-.act.str{color:#0a7a55}.act.atn{color:var(--am)}
-.alist{list-style:none;display:flex;flex-direction:column;gap:8px}
-.alist li{font-size:12px;color:var(--sub);line-height:1.65;padding-left:14px;position:relative;margin-bottom:2px}
-.alist li::before{content:"•";position:absolute;left:0;top:0;font-weight:700}
-.alist.str li::before{color:#10b981}
-.alist.atn li::before{color:var(--am)}
-/* RECOMENDAÇÕES */
-.rg{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:14px;margin-bottom:26px}
-.rc{background:var(--card);border-radius:12px;padding:16px 18px;border:1px solid var(--border);display:flex;gap:12px}
-.rn{font-size:22px;font-weight:900;color:var(--pl);flex-shrink:0;line-height:1.2}
-.rc.feed .rn{color:var(--pl)}.rc.story .rn{color:var(--al)}
-.rc.feed{border-left:3px solid var(--p)}.rc.story{border-left:3px solid var(--a)}
-.rt{font-size:12px;font-weight:700;color:var(--tx);margin-bottom:3px}
-.rb{font-size:11px;color:var(--sub);line-height:1.5}
-/* CONCLUSION */
-.ccl{background:var(--pl);border-radius:12px;padding:16px 20px;margin-top:12px}
-.ccl-text{font-size:13px;color:var(--sub);line-height:1.65}
-/* FOOTER */
-.ft{text-align:center;padding:26px 24px;font-size:11px;color:var(--mu);border-top:1px solid var(--border);margin-top:6px}
+:root{--p:#003f7c;--p2:#1a5a9a;--a:#f8b940;--ad:#d99a20;--al:rgba(248,185,64,0.13);--pl:rgba(0,63,124,0.08);--bg:#f0f3f8;--white:#ffffff;--text:#1a1a2e;--muted:#6b7280;--border:#dde3ed;--green:#10b981;--orange:#f97316;}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+body{font-family:'Segoe UI',system-ui,-apple-system,sans-serif;background:var(--bg);color:var(--text);line-height:1.6;font-size:15px;}
+a{color:var(--p2);text-decoration:none;}a:hover{text-decoration:underline;}
+.site-header{background:linear-gradient(135deg,var(--p) 0%,var(--p2) 60%,#2471c8 100%);color:#fff;padding:48px 24px 40px;text-align:center;position:relative;overflow:hidden;}
+.site-header::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 80% 20%,rgba(248,185,64,0.18) 0%,transparent 60%);pointer-events:none;}
+.avatar-wrap{width:90px;height:90px;border-radius:50%;background:linear-gradient(135deg,var(--a),var(--ad));display:flex;align-items:center;justify-content:center;font-size:2.4rem;margin:0 auto 16px;box-shadow:0 4px 20px rgba(0,0,0,0.3);border:3px solid rgba(255,255,255,0.3);}
+.header-handle{font-size:1rem;opacity:0.8;letter-spacing:0.05em;margin-bottom:4px;}
+.header-name{font-size:2rem;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;}
+.header-bio{max-width:520px;margin:0 auto 16px;opacity:0.88;font-size:0.95rem;line-height:1.5;}
+.header-tags{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-bottom:24px;}
+.tag{background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.25);border-radius:20px;padding:4px 14px;font-size:0.8rem;letter-spacing:0.03em;}
+.header-stats{display:flex;justify-content:center;gap:32px;margin-bottom:24px;flex-wrap:wrap;}
+.hstat{text-align:center;}.hstat-val{font-size:1.5rem;font-weight:700;color:var(--a);}.hstat-lbl{font-size:0.78rem;opacity:0.75;text-transform:uppercase;letter-spacing:0.06em;}
+.period-badge{display:inline-flex;align-items:center;gap:8px;background:rgba(248,185,64,0.2);border:1px solid rgba(248,185,64,0.45);border-radius:24px;padding:8px 20px;font-size:0.88rem;color:#ffe08a;font-weight:600;}
+.container{max-width:1100px;margin:0 auto;padding:0 20px;}
+.section{padding:48px 0 16px;}
+.section-title{font-size:1.35rem;font-weight:700;color:var(--p);border-left:4px solid var(--a);padding-left:14px;margin-bottom:24px;display:flex;align-items:center;gap:10px;}
+.kpi-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:16px;margin-bottom:24px;}
+.kpi-card{background:var(--white);border-radius:14px;padding:20px 18px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,63,124,0.06);transition:transform 0.15s,box-shadow 0.15s;position:relative;overflow:hidden;}
+.kpi-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--p),var(--a));}
+.kpi-card:hover{transform:translateY(-3px);box-shadow:0 6px 20px rgba(0,63,124,0.12);}
+.kpi-icon{font-size:1.6rem;margin-bottom:8px;display:block;}
+.kpi-val{font-size:1.6rem;font-weight:700;color:var(--p);line-height:1;margin-bottom:4px;}
+.kpi-label{font-size:0.8rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.04em;}
+.kpi-badge{display:inline-block;font-size:0.72rem;padding:2px 8px;border-radius:10px;margin-top:6px;font-weight:600;}
+.badge-green{background:#d1fae5;color:#065f46;}.badge-blue{background:var(--pl);color:var(--p);}.badge-gold{background:var(--al);color:var(--ad);}.badge-orange{background:#fff7ed;color:#c2410c;}
+.obs-card{background:linear-gradient(135deg,var(--al) 0%,rgba(255,255,255,0.9) 100%);border:1.5px solid var(--a);border-radius:14px;padding:24px 28px;margin-bottom:32px;position:relative;}
+.obs-card h3{color:var(--p);font-size:1.05rem;margin-bottom:10px;}.obs-card p{color:#374151;font-size:0.92rem;line-height:1.7;}.obs-card strong{color:var(--p);}
+.chart-row{display:grid;gap:20px;margin-bottom:24px;}
+.chart-row.cols-1{grid-template-columns:1fr;}.chart-row.cols-2{grid-template-columns:1fr 1fr;}.chart-row.cols-3{grid-template-columns:repeat(3,1fr);}
+.chart-card{background:var(--white);border-radius:14px;padding:24px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,63,124,0.06);}
+.chart-card h4{font-size:0.92rem;font-weight:700;color:var(--p);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.05em;}
+.chart-wrap{position:relative;height:260px;}.chart-wrap.tall{height:320px;}
+.mini-kpi-row{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:12px;margin-bottom:24px;}
+.mini-kpi{background:var(--white);border:1px solid var(--border);border-radius:10px;padding:14px 16px;text-align:center;}
+.mini-kpi .val{font-size:1.2rem;font-weight:700;color:var(--p);}.mini-kpi .lbl{font-size:0.75rem;color:var(--muted);margin-top:4px;text-transform:uppercase;letter-spacing:0.04em;}
+.table-wrap{background:var(--white);border-radius:14px;border:1px solid var(--border);overflow:hidden;overflow-x:auto;margin-bottom:24px;box-shadow:0 2px 8px rgba(0,63,124,0.06);}
+table{width:100%;border-collapse:collapse;font-size:0.88rem;}
+thead tr{background:linear-gradient(90deg,var(--p),var(--p2));color:#fff;}
+thead th{padding:12px 16px;text-align:left;font-weight:600;font-size:0.8rem;letter-spacing:0.04em;text-transform:uppercase;white-space:nowrap;}
+tbody tr{border-bottom:1px solid var(--border);transition:background 0.12s;}
+tbody tr:last-child{border-bottom:none;}tbody tr:hover{background:var(--pl);}
+tbody td{padding:12px 16px;color:#374151;white-space:nowrap;}
+.rank-num{background:var(--p);color:#fff;width:26px;height:26px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;font-size:0.8rem;font-weight:700;}
+.rank-num.gold{background:var(--a);color:var(--p);}
+.pill{display:inline-block;padding:2px 10px;border-radius:10px;font-size:0.75rem;font-weight:600;}
+.pill-reel{background:#ede9fe;color:#5b21b6;}.pill-image{background:#fce7f3;color:#9d174d;}.pill-inef{background:#fef3c7;color:#b45309;}.pill-ok{background:#d1fae5;color:#065f46;}.pill-best{background:#dcfce7;color:#14532d;}
+.audience-obs{background:var(--pl);border-left:4px solid var(--p2);border-radius:0 10px 10px 0;padding:16px 20px;margin-bottom:20px;font-size:0.9rem;color:#1e3a5f;}
+.analysis-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-bottom:24px;}
+.analysis-block{background:var(--white);border-radius:14px;padding:24px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,63,124,0.06);}
+.analysis-block h4{font-size:1rem;font-weight:700;margin-bottom:16px;display:flex;align-items:center;gap:8px;}
+.analysis-block.strengths h4{color:var(--green);}.analysis-block.attention h4{color:var(--orange);}
+.analysis-list{list-style:none;}
+.analysis-list li{padding:10px 0;border-bottom:1px solid var(--border);font-size:0.88rem;color:#374151;display:flex;gap:10px;align-items:flex-start;line-height:1.5;}
+.analysis-list li:last-child{border-bottom:none;}.analysis-list li .bullet{flex-shrink:0;}
+.rec-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:16px;margin-bottom:24px;}
+.rec-card{background:var(--white);border-radius:14px;padding:20px;border:1px solid var(--border);box-shadow:0 2px 8px rgba(0,63,124,0.06);display:flex;gap:14px;align-items:flex-start;transition:transform 0.15s;}
+.rec-card:hover{transform:translateY(-2px);}
+.rec-num{width:32px;height:32px;border-radius:50%;background:linear-gradient(135deg,var(--p),var(--p2));color:#fff;display:flex;align-items:center;justify-content:center;font-size:0.82rem;font-weight:700;flex-shrink:0;}
+.rec-num.gold{background:linear-gradient(135deg,var(--a),var(--ad));color:var(--p);}
+.rec-content h5{font-size:0.9rem;font-weight:700;color:var(--p);margin-bottom:4px;}.rec-content p{font-size:0.83rem;color:var(--muted);line-height:1.5;}
+.site-footer{background:var(--p);color:rgba(255,255,255,0.75);text-align:center;padding:28px 24px;font-size:0.85rem;margin-top:48px;}
+.site-footer strong{color:var(--a);}
+@media(max-width:768px){.chart-row.cols-2,.chart-row.cols-3,.analysis-grid{grid-template-columns:1fr;}.kpi-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.kpi-grid{grid-template-columns:1fr 1fr;}.rec-grid{grid-template-columns:1fr;}}
 </style>
 </head>
 <body>
-<div class="hdr">
-  <div class="hi">
-    <div class="ht">
-      <div class="av">📊</div>
-      <div>
-        <div class="ph">@dashdgt</div>
-        <div class="pn">Dash Digital</div>
-        <div class="pb">Marketing sem blá blá blá 💬 Estratégia, resultado e zero enrolação.<br>Especialistas em tráfego pago para lançamentos de cursos e infoprodutos.</div>
-        <div class="ptags"><span class="tag">Agência</span><span class="tag">Tráfego Pago</span><span class="tag a">Lançamentos</span><span class="tag">Infoprodutos</span></div>
-      </div>
-    </div>
-    <div class="hs">
-      <div class="hsi"><div class="hsv">223</div><div class="hsl">Seguidores</div></div>
-      <div class="hsep"></div>
-      <div class="hsi"><div class="hsv">9</div><div class="hsl">Seguindo</div></div>
-      <div class="hsep"></div>
-      <div class="hsi"><div class="hsv">209</div><div class="hsl">Publicações</div></div>
-    </div>
-    <div class="pbadge">📅 Período: 14 abr – 13 mai 2026 (30 dias)</div>
-  </div>
+<header class="site-header">
+<div class="container">
+<div class="avatar-wrap">&#x1F4CA;</div>
+<p class="header-handle">@dashdgt</p>
+<h1 class="header-name">Dash Digital</h1>
+<p class="header-bio">Ag&ecirc;ncia de marketing digital especializada em tr&aacute;fego pago para professores que querem lan&ccedil;ar e escalar cursos online.</p>
+<div class="header-tags">
+<span class="tag">#Tr&aacute;fegoPago</span><span class="tag">#Lan&ccedil;amentoDeCursos</span><span class="tag">#MarketingDigital</span><span class="tag">#ProfessoresDigitais</span><span class="tag">#MetaAds</span>
 </div>
-
-<div class="wrap">
-
-  <!-- MÉTRICAS -->
-  <div class="st">Métricas do Período (30 dias)</div>
-  <div class="kg">
-    <div class="kp n1"><div class="ki">👁️</div><div class="kv">14.634</div><div class="kl">Visualizações</div><div class="ks sn">Total no período</div></div>
-    <div class="kp n2"><div class="ki">📡</div><div class="kv">10.231</div><div class="kl">Alcance</div><div class="ks sn">Contas únicas</div></div>
-    <div class="kp a1"><div class="ki">💬</div><div class="kv">667</div><div class="kl">Interações</div><div class="ks sn">Likes + saves + shares</div></div>
-    <div class="kp a2"><div class="ki">👥</div><div class="kv">+41</div><div class="kl">Novos seguidores</div><div class="ks swn">⚠ crescimento lento</div></div>
-    <div class="kp g"><div class="ki">📊</div><div class="kv">6,52%</div><div class="kl">Engajamento</div><div class="ks sup">↑ taxa excelente</div></div>
-    <div class="kp v"><div class="ki">❤️</div><div class="kv">460</div><div class="kl">Curtidas</div><div class="ks sn">Média 15/dia</div></div>
-    <div class="kp n1"><div class="ki">🔖</div><div class="kv">30</div><div class="kl">Salvamentos</div><div class="ks swn">⚠ baixo para o nicho</div></div>
-    <div class="kp a1"><div class="ki">↗️</div><div class="kv">45</div><div class="kl">Compartilhamentos</div><div class="ks sn">Difusão orgânica</div></div>
-  </div>
-
-  <!-- OBS IMPORTANTE -->
-  <div class="obs">
-    <div class="obs-title">💡 Observação Importante</div>
-    <div class="obs-body">A Dash Digital é uma agência de marketing focada em tráfego pago para professores que querem lançar cursos. O Instagram é o principal canal de captação de clientes nesse nicho. A base de <strong>223 seguidores</strong> está em fase inicial, mas a taxa de engajamento de <strong>6,52%</strong> é muito acima da média de mercado (1–3% para perfis desse tamanho), indicando que o conteúdo já ressoa com o público certo. O principal desafio é ampliar a base mantendo essa qualidade de engajamento.</div>
-  </div>
-
-  <!-- EVOLUÇÃO DIÁRIA -->
-  <div class="st">Evolução Diária — Views &amp; Alcance</div>
-  <div class="cd">
-    <div class="ct">Visualizações e Alcance por Dia (últimos 30 dias)</div>
-    <div class="cs">Lacunas visíveis em 16–20/abr e 07–12/mai — dias de inatividade total</div>
-    <div style="position:relative;height:220px"><canvas id="cDailyVR"></canvas></div>
-  </div>
-  <div class="g2">
-    <div class="cd nm">
-      <div class="ct">Interações Diárias por Tipo</div>
-      <div class="cs">Curtidas, comentários, saves e compartilhamentos</div>
-      <div style="position:relative;height:210px"><canvas id="cDailyI"></canvas></div>
-    </div>
-    <div class="cd nm">
-      <div class="ct">Novos Seguidores por Dia</div>
-      <div class="cs">Total: +41 no período</div>
-      <div style="position:relative;height:210px"><canvas id="cDailyF"></canvas></div>
-    </div>
-  </div>
-
-  <!-- AUDIÊNCIA -->
-  <div class="st" style="margin-top:24px">Análise da Audiência</div>
-  <div class="obs">
-    <div class="obs-title">💡 Observação Importante sobre a Audiência</div>
-    <div class="obs-body">O público <strong>25–44 anos representa 65,9%</strong> da base — perfil ideal para uma agência que busca professores e criadores de conteúdo como clientes. São pessoas com maturidade empreendedora e capacidade de investimento em tráfego pago. Não há gap estratégico na composição da audiência: o algoritmo já está entregando o conteúdo para as pessoas certas. O foco deve ser <strong>ampliar a base</strong>, não mudar o perfil.</div>
-  </div>
-  <div class="g3">
-    <div class="cd nm">
-      <div class="ct">Distribuição por Gênero</div>
-      <div class="cs">Equilíbrio masculino / feminino</div>
-      <div style="position:relative;height:200px"><canvas id="cGender"></canvas></div>
-    </div>
-    <div class="cd nm">
-      <div class="ct">Faixa Etária dos Seguidores</div>
-      <div class="cs">25–44 anos = 65,9% ✅</div>
-      <div style="position:relative;height:200px"><canvas id="cAge"></canvas></div>
-    </div>
-    <div class="cd nm">
-      <div class="ct">Países de Origem</div>
-      <div class="cs">98,6% brasileiros</div>
-      <div style="position:relative;height:200px"><canvas id="cCountry"></canvas></div>
-    </div>
-  </div>
-
-  <!-- PERFORMANCE POR TIPO -->
-  <div class="st" style="margin-top:24px">Performance por Tipo de Conteúdo</div>
-  <div class="g2">
-    <div class="cd nm">
-      <div class="ct">Engajamento Médio por Formato</div>
-      <div class="cs">Reels lideram com folga</div>
-      <div style="position:relative;height:200px"><canvas id="cFmtEng"></canvas></div>
-    </div>
-    <div class="cd nm">
-      <div class="ct">Distribuição de Posts por Formato</div>
-      <div class="cs">13 posts no período</div>
-      <div style="position:relative;height:200px"><canvas id="cFmtDist"></canvas></div>
-    </div>
-  </div>
-  <div class="ccl">
-    <div class="ccl-text"><strong>Conclusão:</strong> Reels têm engajamento médio de <strong>32,2</strong> — quase o dobro dos carrosséis (17,8) e imagens (20,0). O formato de vídeo curto é claramente o mais eficiente para a Dash Digital. Carrosséis educativos sobre estratégias de marketing tendem a gerar mais salvamentos (conteúdo de referência), o que complementa a performance dos reels em alcance.</div>
-  </div>
-
-  <!-- RANKING POSTS -->
-  <div class="st" style="margin-top:24px">Ranking dos Melhores Posts (30 dias)</div>
-  <div class="cd">
-    <div class="ct">Top 5 Publicações por Engajamento</div>
-    <div class="cs">Curtidas + comentários + salvamentos + compartilhamentos</div>
-    <div style="overflow-x:auto">
-      <table class="tbl">
-        <thead><tr><th>#</th><th>Data</th><th>Formato</th><th>Views</th><th>Alcance</th><th>Curtidas</th><th>Coment.</th><th>Saves</th><th>Shares</th><th>Engaj.</th><th>Link</th></tr></thead>
-        <tbody>
-          <tr><td><strong style="color:var(--ad)">🥇1</strong></td><td>25/04</td><td><span class="mt mr">🎬 Reel</span></td><td>610</td><td>350</td><td>28</td><td>10</td><td>5</td><td>8</td><td><span class="eb" style="width:56px"></span><strong>56</strong></td><td><a class="pl" href="https://www.instagram.com/reel/DXklNzfDIuU/" target="_blank">Ver ↗</a></td></tr>
-          <tr><td><strong style="color:var(--mu)">🥈2</strong></td><td>28/04</td><td><span class="mt mr">🎬 Reel</span></td><td>430</td><td>309</td><td>19</td><td>12</td><td>3</td><td>4</td><td><span class="eb" style="width:43px"></span><strong>43</strong></td><td><a class="pl" href="https://www.instagram.com/reel/DXsO8PXjqfT/" target="_blank">Ver ↗</a></td></tr>
-          <tr><td><strong style="color:var(--am)">🥉3</strong></td><td>22/04</td><td><span class="mt mr">🎬 Reel</span></td><td>333</td><td>208</td><td>13</td><td>8</td><td>3</td><td>8</td><td><span class="eb" style="width:34px"></span><strong>34</strong></td><td><a class="pl" href="https://www.instagram.com/reel/DXcvOq6DdMy/" target="_blank">Ver ↗</a></td></tr>
-          <tr><td>4</td><td>23/04</td><td><span class="mt mr">🎬 Reel</span></td><td>332</td><td>194</td><td>17</td><td>7</td><td>3</td><td>3</td><td><span class="eb" style="width:33px"></span><strong>33</strong></td><td><a class="pl" href="https://www.instagram.com/reel/DXfR2AiGm_0/" target="_blank">Ver ↗</a></td></tr>
-          <tr><td>5</td><td>01/05</td><td><span class="mt mi">🖼️ Imagem</span></td><td>283</td><td>138</td><td>17</td><td>9</td><td>1</td><td>1</td><td><span class="eb" style="width:28px"></span><strong>28</strong></td><td><a class="pl" href="https://www.instagram.com/p/DXzfBDREZ7-/" target="_blank">Ver ↗</a></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-  <div class="cd">
-    <div class="ct">Comparativo de Performance dos Posts — Alcance vs Engajamento</div>
-    <div class="cs">Cada ponto representa um post. Posts no canto superior direito são os mais eficientes.</div>
-    <div style="position:relative;height:260px"><canvas id="cScatter"></canvas></div>
-  </div>
-
-  <!-- ANÁLISE ESTRATÉGICA -->
-  <div class="st" style="margin-top:24px">Análise Estratégica</div>
-  <div class="ag">
-    <div class="acd str">
-      <div class="act str">✅ Pontos Fortes</div>
-      <ul class="alist str">
-        <li>Taxa de engajamento de <strong>6,52%</strong> — muito acima da média de mercado para perfis de 100–500 seguidores (benchmark: 1–3%)</li>
-        <li>Público <strong>25–44 anos (65,9%)</strong> perfeitamente alinhado com o perfil de professores e empreendedores digitais</li>
-        <li>Reels com tom irreverente têm engajamento médio de <strong>32,2</strong> — formato bem calibrado para o nicho</li>
-        <li>Equilíbrio de gênero (42% M / 41% F) amplia o potencial de alcance no nicho de educação</li>
-        <li>Audiência quase exclusivamente brasileira (98,6%) — sem dispersão geográfica fora do mercado-alvo</li>
-        <li>Post de 06/mai gerou <strong>245 interações em um único dia</strong> — capacidade viral demonstrada</li>
-      </ul>
-    </div>
-    <div class="acd atn">
-      <div class="act atn">⚠️ Pontos de Atenção</div>
-      <ul class="alist atn">
-        <li><strong>+41 seguidores em 30 dias</strong> — ritmo insuficiente para uma agência que precisa construir autoridade no nicho</li>
-        <li><strong>11 dias de inatividade total</strong> (16–20/abr e 07–12/mai) — o algoritmo penaliza inconsistência com redução de alcance dos posts seguintes</li>
-        <li>Apenas <strong>30 salvamentos</strong> no período — conteúdo educativo e estratégico deveria gerar mais "saves"</li>
-        <li>Alcance máximo por post ainda limitado (350 pessoas) — conteúdo não está chegando fora da base existente</li>
-        <li>Carrosséis têm engajamento médio de apenas 17,8 — precisam de CTAs mais fortes ou conteúdo mais denso</li>
-        <li>Pouca variedade de formatos — ausência de conteúdo de prova social (cases de clientes)</li>
-      </ul>
-    </div>
-  </div>
-
-  <!-- RECOMENDAÇÕES FEED -->
-  <div class="st">Recomendações Estratégicas para o Feed</div>
-  <div class="rg">
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">01</div><div><div class="rt">Poste cases específicos de professores-clientes</div><div class="rb">Conteúdo como "Como ajudamos um professor de Matemática a faturar R$50k em 7 dias" atrai o cliente ideal e posiciona a Dash como especialista no nicho educacional.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">02</div><div><div class="rt">Mínimo de 1 post por dia — sem pausas longas</div><div class="rb">A consistência é o fator mais importante para o algoritmo. Dias zerados como os de 16–20/abr derrubam o alcance dos posts seguintes em até 60%.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">03</div><div><div class="rt">Hook nos primeiros 3 segundos do reel</div><div class="rb">Reels bem-executados já são o formato mais eficiente (eng. médio 32,2). Potencialize com hooks fortes: uma frase de impacto ou dado surpreendente abre o conteúdo.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">04</div><div><div class="rt">Carrosséis de "antes e depois" de métricas</div><div class="rb">Carrossel mostrando o crescimento de um cliente (antes: sem estratégia × depois: com gestão Dash) tem alta taxa de save e compartilhamento no nicho de marketing.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">05</div><div><div class="rt">Séries temáticas semanais</div><div class="rb">Crie uma série recorrente: "Segunda do tráfego" ou "Dica de lançamento da semana". Séries criam expectativa e fidelizam o seguidor — aumentando o retorno semanal.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">06</div><div><div class="rt">Conteúdo de objeção: "Por que meu lançamento não vendeu?"</div><div class="rb">Professores que floparam num lançamento estão ativamente buscando resposta. Conteúdo que nomeia a dor exata e oferece diagnóstico gera busca ativa pelo perfil.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">07</div><div><div class="rt">Colabs com perfis de professores/clientes</div><div class="rb">Peça aos clientes para mencionar a Dash em reels de bastidores dos próprios lançamentos. Cada menção é um endosso orgânico para o nicho exato que vocês querem alcançar.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">08</div><div><div class="rt">Variar entre humor e conteúdo denso estratégico</div><div class="rb">Os posts mais engajados têm tom irreverente. Mas salvamentos vêm de conteúdo denso. A combinação ideal é: 60% entertainment/hook + 40% conteúdo salvo-e-referenciado.</div></div></div>
-    <div class="rc feed"><div class="rn" style="color:rgba(0,63,124,0.3)">09</div><div><div class="rt">CTA de DM em todo post de reel</div><div class="rb">Sempre fechar reels com "Manda 'QUERO' no direct" ou similar. Transforma visualizações em conversas, que é onde a venda acontece para uma agência B2B.</div></div></div>
-  </div>
-
-  <!-- RECOMENDAÇÕES STORIES -->
-  <div class="st">Recomendações Estratégicas para Stories</div>
-  <div class="rg">
-    <div class="rc story"><div class="rn" style="color:rgba(248,185,64,0.5)">01</div><div><div class="rt">Reposte o reel do feed nos stories com CTA</div><div class="rb">Compartilhe cada reel publicado nos stories com uma frase de ação: "Salva esse conteúdo antes de sumir!" Isso aumenta o alcance do post em até 30% nas primeiras horas.</div></div></div>
-    <div class="rc story"><div class="rn" style="color:rgba(248,185,64,0.5)">02</div><div><div class="rt">Cases rápidos em sequência de stories</div><div class="rb">3 stories: (1) apresenta o cliente, (2) mostra o resultado em número, (3) CTA para o direct. Funciona como um mini-funil de vendas dentro do próprio Instagram.</div></div></div>
-    <div class="rc story"><div class="rn" style="color:rgba(248,185,64,0.5)">03</div><div><div class="rt">Enquete sobre a dor do cliente ideal</div><div class="rb">"Você já tentou lançar um curso e não vendeu o esperado?" — Sim / Já vendeu bem. Isso filtra leads quentes, aumenta o engajamento do perfil e justifica o próximo reel.</div></div></div>
-    <div class="rc story"><div class="rn" style="color:rgba(248,185,64,0.5)">04</div><div><div class="rt">Bastidores de estratégia de cliente</div><div class="rb">Mostre (sem revelar dados sigilosos) o painel de uma campanha funcionando: impressões subindo, custo por lead caindo. Esse tipo de prova social converte muito no nicho.</div></div></div>
-    <div class="rc story"><div class="rn" style="color:rgba(248,185,64,0.5)">05</div><div><div class="rt">Prévia do próximo conteúdo do feed</div><div class="rb">"Amanhã vou mostrar o erro que faz 90% dos lançamentos de professores fracassarem" — gera antecipação e aumenta a taxa de abertura do story no dia seguinte.</div></div></div>
-    <div class="rc story"><div class="rn" style="color:rgba(248,185,64,0.5)">06</div><div><div class="rt">Caixinha de perguntas sobre tráfego/lançamento</div><div class="rb">Gera pauta para novos reels, alimenta o funil de conteúdo e cria conexão direta com potenciais clientes. Responda cada pergunta publicamente — cada resposta é um conteúdo.</div></div></div>
-  </div>
-
+<div class="header-stats">
+<div class="hstat"><div class="hstat-val">223</div><div class="hstat-lbl">Seguidores</div></div>
+<div class="hstat"><div class="hstat-val">9</div><div class="hstat-lbl">Seguindo</div></div>
+<div class="hstat"><div class="hstat-val">209</div><div class="hstat-lbl">Publica&ccedil;&otilde;es</div></div>
 </div>
-<div class="ft">Relatório gerado para a Dash Digital.<br>Dados coletados via Windsor.ai · Instagram Business API · Período: 14 abr – 13 mai 2026</div>
-
+<div class="period-badge">&#x1F4C5; Per&iacute;odo analisado: 14 abr &ndash; 13 mai 2026</div>
+</div>
+</header>
+<div class="container">
+<section class="section">
+<h2 class="section-title">&#x1F4C8; M&eacute;tricas do Per&iacute;odo</h2>
+<div class="kpi-grid">
+<div class="kpi-card"><span class="kpi-icon">&#x1F441;&#xFE0F;</span><div class="kpi-val">14.634</div><div class="kpi-label">Views Totais</div><span class="kpi-badge badge-blue">30 dias</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F4E1;</span><div class="kpi-val">10.231</div><div class="kpi-label">Alcance Total</div><span class="kpi-badge badge-blue">org + pago</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F331;</span><div class="kpi-val">2.984</div><div class="kpi-label">Alcance Org&acirc;nico</div><span class="kpi-badge badge-orange">&#x2193; 29,2% do total</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F4AC;</span><div class="kpi-val">667</div><div class="kpi-label">Intera&ccedil;&otilde;es</div><span class="kpi-badge badge-blue">likes+com+saves+shares</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F465;</span><div class="kpi-val">+41</div><div class="kpi-label">Novos Seguidores</div><span class="kpi-badge badge-blue">no per&iacute;odo</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F4CA;</span><div class="kpi-val">22,3%</div><div class="kpi-label">Eng. Org&acirc;nico</div><span class="kpi-badge badge-green">&#x1F525; excelente</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x2764;&#xFE0F;</span><div class="kpi-val">460</div><div class="kpi-label">Curtidas</div><span class="kpi-badge badge-blue">likes</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F516;</span><div class="kpi-val">30</div><div class="kpi-label">Salvamentos</div><span class="kpi-badge badge-gold">saves</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F4B0;</span><div class="kpi-val">R$125,60</div><div class="kpi-label">Investimento Ads</div><span class="kpi-badge badge-gold">Meta Ads</span></div>
+<div class="kpi-card"><span class="kpi-icon">&#x1F3AF;</span><div class="kpi-val">R$3,06</div><div class="kpi-label">Custo/Seguidor</div><span class="kpi-badge badge-orange">meta: &lt;R$2,00</span></div>
+</div>
+</section>
+<div class="obs-card">
+<h3>Observa&ccedil;&atilde;o Importante sobre este Relat&oacute;rio</h3>
+<p>Os dados de <strong>alcance e intera&ccedil;&otilde;es</strong> refletem o per&iacute;odo de <strong>14 de abril a 13 de maio de 2026</strong>. O alcance total de <strong>10.231 pessoas</strong> combina tr&aacute;fego org&acirc;nico (<strong>2.984 &mdash; 29,2%</strong>) e tr&aacute;fego pago (<strong>7.247 &mdash; 70,8%</strong>), sendo que o investimento em an&uacute;ncios foi de apenas <strong>R$125,60</strong> concentrado em <strong>11 dias</strong> do per&iacute;odo (23/04 a 05/05). O engajamento org&acirc;nico de <strong>22,3%</strong> &eacute; excepcional para o nicho &mdash; muito acima do benchmark de 3&ndash;5% &mdash; indicando que a conta tem <strong>alta qualidade de conte&uacute;do</strong>, mas ainda base de audi&ecirc;ncia pequena para maximizar o alcance sem paid media.</p>
+</div>
+<section class="section">
+<h2 class="section-title">&#x1F4C5; Evolu&ccedil;&atilde;o Di&aacute;ria</h2>
+<div class="chart-row cols-1">
+<div class="chart-card"><h4>Views Di&aacute;rias &amp; Alcance Total</h4><div class="chart-wrap tall"><canvas id="cDailyVR"></canvas></div></div>
+</div>
+<div class="chart-row cols-2">
+<div class="chart-card"><h4>Intera&ccedil;&otilde;es Di&aacute;rias (Likes &middot; Coment&aacute;rios &middot; Saves &middot; Shares)</h4><div class="chart-wrap"><canvas id="cDailyI"></canvas></div></div>
+<div class="chart-card"><h4>Novos Seguidores por Dia</h4><div class="chart-wrap"><canvas id="cDailyF"></canvas></div></div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F4B0; An&aacute;lise de Tr&aacute;fego Pago</h2>
+<div class="mini-kpi-row">
+<div class="mini-kpi"><div class="val">R$125,60</div><div class="lbl">Investido</div></div>
+<div class="mini-kpi"><div class="val">8.210</div><div class="lbl">Impress&otilde;es Pagas</div></div>
+<div class="mini-kpi"><div class="val">7.247</div><div class="lbl">Pessoas Alcan&ccedil;adas</div></div>
+<div class="mini-kpi"><div class="val">337</div><div class="lbl">Cliques</div></div>
+<div class="mini-kpi"><div class="val">R$15,30</div><div class="lbl">CPM M&eacute;dio</div></div>
+<div class="mini-kpi"><div class="val">R$3,06</div><div class="lbl">Custo/Seguidor</div></div>
+</div>
+<div class="table-wrap">
+<table>
+<thead><tr><th>Campanha</th><th>Objetivo</th><th>Gasto</th><th>Impress&otilde;es</th><th>Alcance</th><th>Cliques</th><th>CPM</th><th>CPC</th><th>CTR</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>Tr&aacute;fego - Insta</td><td>LINK_CLICKS</td><td>R$12,85</td><td>302</td><td>62</td><td>5</td><td><strong>R$42,55</strong></td><td>R$2,57</td><td>1,66%</td><td><span class="pill pill-inef">&#x26A0; Ineficiente</span></td></tr>
+<tr><td>Post: &ldquo;Voc&ecirc; jogou fora o amor...&rdquo;</td><td>LINK_CLICKS</td><td>R$51,45</td><td>2.724</td><td>2.464</td><td>123</td><td>R$18,89</td><td>R$0,42</td><td>4,52%</td><td><span class="pill pill-ok">&#x2705; Bom</span></td></tr>
+<tr><td>[Tr&aacute;fego] [Insta] Seguidores</td><td>LINK_CLICKS</td><td>R$61,30</td><td>5.184</td><td>4.799</td><td>209</td><td>R$11,82</td><td>R$0,29</td><td>4,03%</td><td><span class="pill pill-best">&#x1F3C6; Melhor</span></td></tr>
+<tr style="background:var(--pl);font-weight:700;"><td><strong>TOTAL</strong></td><td>&mdash;</td><td><strong>R$125,60</strong></td><td><strong>8.210</strong></td><td><strong>7.247</strong></td><td><strong>337</strong></td><td><strong>R$15,30</strong></td><td>&mdash;</td><td>&mdash;</td><td>&mdash;</td></tr>
+</tbody>
+</table>
+</div>
+<div class="chart-row cols-2">
+<div class="chart-card"><h4>Alcance Org&acirc;nico vs Pago por Dia</h4><div class="chart-wrap"><canvas id="cReachSplit"></canvas></div></div>
+<div class="chart-card"><h4>Gasto Di&aacute;rio em An&uacute;ncios (R$)</h4><div class="chart-wrap"><canvas id="cSpend"></canvas></div></div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F465; An&aacute;lise da Audi&ecirc;ncia</h2>
+<div class="audience-obs"><strong>Perfil da audi&ecirc;ncia:</strong> P&uacute;blico predominantemente <strong>masculino (42%) e feminino (41%)</strong>, com 17% sem defini&ccedil;&atilde;o. A faixa et&aacute;ria de <strong>25&ndash;44 anos concentra 65,9%</strong> da audi&ecirc;ncia &mdash; alinhamento perfeito com o p&uacute;blico-alvo de professores e empreendedores digitais. Base <strong>100% brasileira</strong> (208 de 211 seguidores com localiza&ccedil;&atilde;o definida).</div>
+<div class="chart-row cols-3">
+<div class="chart-card"><h4>Distribui&ccedil;&atilde;o por G&ecirc;nero</h4><div class="chart-wrap"><canvas id="cGender"></canvas></div></div>
+<div class="chart-card"><h4>Faixa Et&aacute;ria</h4><div class="chart-wrap"><canvas id="cAge"></canvas></div></div>
+<div class="chart-card"><h4>Pa&iacute;ses</h4><div class="chart-wrap"><canvas id="cCountry"></canvas></div></div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F39E; Performance por Tipo de Conte&uacute;do</h2>
+<div class="chart-row cols-2">
+<div class="chart-card"><h4>Engajamento M&eacute;dio por Formato</h4><div class="chart-wrap"><canvas id="cFmtEng"></canvas></div></div>
+<div class="chart-card"><h4>Distribui&ccedil;&atilde;o de Posts por Formato</h4><div class="chart-wrap"><canvas id="cFmtDist"></canvas></div></div>
+</div>
+<div class="obs-card" style="margin-bottom:0;">
+<h3>Conclus&atilde;o sobre Formatos</h3>
+<p>Os <strong>Reels lideram com engajamento m&eacute;dio de 32,2</strong> &mdash; mais que o dobro dos carross&eacute;is (17,8) e 61% acima das imagens (20,0). Com apenas <strong>6 Reels publicados</strong> (46% do total), h&aacute; espa&ccedil;o claro para aumentar a frequ&ecirc;ncia desse formato. As <strong>imagens performam melhor que carross&eacute;is</strong> neste per&iacute;odo. A estrat&eacute;gia recomendada &eacute; <strong>60% Reels / 30% Imagens / 10% Carross&eacute;is</strong>.</p>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F3C6; Ranking dos Melhores Posts</h2>
+<div class="table-wrap">
+<table>
+<thead><tr><th>#</th><th>Data</th><th>Formato</th><th>Views</th><th>Alcance</th><th>Likes</th><th>Com.</th><th>Saves</th><th>Shares</th><th>Eng.</th><th>Link</th></tr></thead>
+<tbody>
+<tr><td><span class="rank-num gold">1</span></td><td>25/04</td><td><span class="pill pill-reel">Reel</span></td><td>610</td><td>350</td><td>28</td><td>10</td><td>5</td><td>8</td><td><strong>56</strong></td><td><a href="https://www.instagram.com/reel/DXklNzfDIuU/" target="_blank">Ver &#x2197;</a></td></tr>
+<tr><td><span class="rank-num">2</span></td><td>28/04</td><td><span class="pill pill-reel">Reel</span></td><td>430</td><td>309</td><td>19</td><td>12</td><td>3</td><td>4</td><td><strong>43</strong></td><td><a href="https://www.instagram.com/reel/DXsO8PXjqfT/" target="_blank">Ver &#x2197;</a></td></tr>
+<tr><td><span class="rank-num">3</span></td><td>22/04</td><td><span class="pill pill-reel">Reel</span></td><td>333</td><td>208</td><td>13</td><td>8</td><td>3</td><td>8</td><td><strong>34</strong></td><td><a href="https://www.instagram.com/reel/DXcvOq6DdMy/" target="_blank">Ver &#x2197;</a></td></tr>
+<tr><td><span class="rank-num">4</span></td><td>23/04</td><td><span class="pill pill-reel">Reel</span></td><td>332</td><td>194</td><td>17</td><td>7</td><td>3</td><td>3</td><td><strong>33</strong></td><td><a href="https://www.instagram.com/reel/DXfR2AiGm_0/" target="_blank">Ver &#x2197;</a></td></tr>
+<tr><td><span class="rank-num">5</span></td><td>01/05</td><td><span class="pill pill-image">Imagem</span></td><td>283</td><td>138</td><td>17</td><td>9</td><td>1</td><td>1</td><td><strong>28</strong></td><td><a href="https://www.instagram.com/p/DXzfBDREZ7-/" target="_blank">Ver &#x2197;</a></td></tr>
+</tbody>
+</table>
+</div>
+<div class="chart-row cols-1">
+<div class="chart-card"><h4>Alcance vs Engajamento &mdash; Todos os Posts (13 publica&ccedil;&otilde;es)</h4><div class="chart-wrap"><canvas id="cScatter"></canvas></div></div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F9ED; An&aacute;lise Estrat&eacute;gica</h2>
+<div class="analysis-grid">
+<div class="analysis-block strengths">
+<h4>&#x2705; Pontos Fortes</h4>
+<ul class="analysis-list">
+<li><span class="bullet">&#x1F525;</span><span>Engajamento org&acirc;nico de <strong>22,3%</strong> &mdash; excepcional, muito acima do benchmark de 3&ndash;5% para o nicho de marketing digital.</span></li>
+<li><span class="bullet">&#x1F3AF;</span><span>P&uacute;blico <strong>25&ndash;44 anos concentra 65,9%</strong> da audi&ecirc;ncia &mdash; perfil ideal de professores e empreendedores digitais querendo lan&ccedil;ar cursos.</span></li>
+<li><span class="bullet">&#x1F3AC;</span><span>Reels com engajamento m&eacute;dio de <strong>32,2</strong> &mdash; formato bem calibrado para o nicho, quase o dobro do desempenho dos carross&eacute;is.</span></li>
+<li><span class="bullet">&#x1F4E2;</span><span>Campanha de post impulsionado com <strong>CTR de 4,52%</strong> &mdash; prova que o conte&uacute;do converte bem quando amplificado com tr&aacute;fego pago.</span></li>
+<li><span class="bullet">&#x1F4B8;</span><span>Campanha &ldquo;Seguidores&rdquo; com <strong>CPM R$11,82</strong> &mdash; custo eficiente para o est&aacute;gio inicial da conta, bem abaixo da m&eacute;dia do segmento.</span></li>
+<li><span class="bullet">&#x1F30D;</span><span>Audi&ecirc;ncia <strong>100% brasileira</strong> (98,6%) &mdash; altamente qualificada e alinhada ao mercado de infoprodutos nacional.</span></li>
+</ul>
+</div>
+<div class="analysis-block attention">
+<h4>&#x26A0; Pontos de Aten&ccedil;&atilde;o</h4>
+<ul class="analysis-list">
+<li><span class="bullet">&#x1F4C9;</span><span><strong>76% do alcance vem de tr&aacute;fego pago</strong> com apenas R$125,60 &mdash; a base org&acirc;nica ainda &eacute; pequena para manter visibilidade sem investimento constante.</span></li>
+<li><span class="bullet">&#x1F5D3;</span><span>Apenas <strong>11 dias com tr&aacute;fego pago ativo</strong> &mdash; concentrar o investimento em menos de 40% do per&iacute;odo desperdi&ccedil;a o momentum org&acirc;nico dos demais dias.</span></li>
+<li><span class="bullet">&#x1F6AB;</span><span>Campanha &ldquo;Tr&aacute;fego - Insta&rdquo; com <strong>CPM R$42,55 e CTR 1,66%</strong> &mdash; ineficiente em rela&ccedil;&atilde;o &agrave;s demais, consumindo budget que poderia ser realocado.</span></li>
+<li><span class="bullet">&#x1F4CC;</span><span>Apenas <strong>30 salvamentos</strong> no per&iacute;odo &mdash; para uma ag&ecirc;ncia de marketing, o conte&uacute;do educativo deveria gerar muito mais saves como refer&ecirc;ncia.</span></li>
+<li><span class="bullet">&#x1F4B0;</span><span><strong>R$3,06 por seguidor</strong> &mdash; custo ainda elevado para o tamanho atual da conta; a meta &eacute; reduzir para abaixo de R$2,00 com otimiza&ccedil;&atilde;o de campanhas.</span></li>
+<li><span class="bullet">&#x1F4CA;</span><span>Dias de <strong>zero publica&ccedil;&atilde;o e zero alcance</strong> (ex: 16/04, 17/04, 20/04) prejudicam o algoritmo e a percep&ccedil;&atilde;o de consist&ecirc;ncia da marca.</span></li>
+</ul>
+</div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F4F8; Recomenda&ccedil;&otilde;es para Feed</h2>
+<div class="rec-grid">
+<div class="rec-card"><div class="rec-num gold">1</div><div class="rec-content"><h5>Cases de Clientes com N&uacute;meros</h5><p>Publique resultados reais de professores atendidos &mdash; &ldquo;De 0 a R$12k em 30 dias com tr&aacute;fego pago&rdquo;. Prova social concreta converte e gera salvamentos.</p></div></div>
+<div class="rec-card"><div class="rec-num">2</div><div class="rec-content"><h5>Consist&ecirc;ncia Di&aacute;ria M&iacute;nima</h5><p>Elimine janelas de inatividade. O per&iacute;odo teve 7 dias sem nenhuma publica&ccedil;&atilde;o &mdash; o algoritmo penaliza a inconsist&ecirc;ncia e reduz o alcance org&acirc;nico dos posts seguintes.</p></div></div>
+<div class="rec-card"><div class="rec-num">3</div><div class="rec-content"><h5>Hook Forte nos Primeiros 3s</h5><p>Todo reel deve abrir com uma provoca&ccedil;&atilde;o: &ldquo;Seu professor favorito est&aacute; perdendo dinheiro &mdash; e voc&ecirc; n&atilde;o sabe por qu&ecirc;&rdquo;. Retention nos 3s iniciais define o alcance do reel.</p></div></div>
+<div class="rec-card"><div class="rec-num">4</div><div class="rec-content"><h5>Carross&eacute;is &ldquo;Antes e Depois&rdquo; de M&eacute;tricas</h5><p>Mostre dashboards de clientes antes e depois da gest&atilde;o da Dash Digital. Carross&eacute;is com dados reais s&atilde;o salvos e compartilhados com frequ&ecirc;ncia no nicho B2B.</p></div></div>
+<div class="rec-card"><div class="rec-num">5</div><div class="rec-content"><h5>S&eacute;ries Tem&aacute;ticas Semanais</h5><p>Crie uma s&eacute;rie recorrente &mdash; ex: &ldquo;Segunda do Tr&aacute;fego&rdquo;, &ldquo;Quarta do Lan&ccedil;amento&rdquo;. S&eacute;ries criam h&aacute;bito de consumo e aumentam o retorno de audi&ecirc;ncia para o perfil.</p></div></div>
+<div class="rec-card"><div class="rec-num">6</div><div class="rec-content"><h5>Conte&uacute;do de Obje&ccedil;&atilde;o</h5><p>&ldquo;Por que meu lan&ccedil;amento n&atilde;o vendeu?&rdquo; &mdash; responder as dores reais do professor atrai quem est&aacute; no meio do funil e filtra leads qualificados para DM.</p></div></div>
+<div class="rec-card"><div class="rec-num">7</div><div class="rec-content"><h5>Colabs com Clientes Professores</h5><p>Use a fun&ccedil;&atilde;o &ldquo;Colabora&ccedil;&atilde;o&rdquo; do Instagram para co-publicar com clientes. O post aparece nos dois perfis, gerando alcance qualificado e endosso org&acirc;nico.</p></div></div>
+<div class="rec-card"><div class="rec-num">8</div><div class="rec-content"><h5>Mix Humor + Conte&uacute;do Estrat&eacute;gico (60/40)</h5><p>60% de conte&uacute;do leve e identific&aacute;vel (memes do universo do professor digital) + 40% conte&uacute;do denso estrat&eacute;gico. Humor aumenta alcance; conte&uacute;do denso ret&eacute;m e converte.</p></div></div>
+<div class="rec-card"><div class="rec-num">9</div><div class="rec-content"><h5>CTA de DM em Todo Reel</h5><p>Finalize cada reel com um CTA direto para DM &mdash; &ldquo;Quer saber como aplicar isso no seu curso? Me chama no direct&rdquo;. DM &eacute; o canal de convers&atilde;o mais eficiente no Instagram.</p></div></div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F4F2; Recomenda&ccedil;&otilde;es para Stories</h2>
+<div class="rec-grid">
+<div class="rec-card"><div class="rec-num gold">1</div><div class="rec-content"><h5>Repostar Reel com CTA Urgente</h5><p>Nas primeiras 2 horas ap&oacute;s publicar um reel, reposte-o no Stories com sticker de link ou caixa de texto &ldquo;assista agora antes que o algoritmo sumir com este&rdquo;. Urg&ecirc;ncia aumenta o clique.</p></div></div>
+<div class="rec-card"><div class="rec-num">2</div><div class="rec-content"><h5>Cases R&aacute;pidos em Sequ&ecirc;ncia (3 Stories)</h5><p>Estrutura: Story 1 &mdash; foto do cliente + contexto; Story 2 &mdash; print do resultado (dashboard/faturamento); Story 3 &mdash; CTA direto para DM ou link de contato.</p></div></div>
+<div class="rec-card"><div class="rec-num">3</div><div class="rec-content"><h5>Enquete sobre a Dor do Cliente</h5><p>Use enquetes semanais: &ldquo;Voc&ecirc; j&aacute; tentou rodar an&uacute;ncio para seu curso? Sim / N&atilde;o&rdquo;. Al&eacute;m de engajar, segmenta a audi&ecirc;ncia para abordagens personalizadas via DM.</p></div></div>
+<div class="rec-card"><div class="rec-num">4</div><div class="rec-content"><h5>Bastidores do Painel de Campanha</h5><p>Mostre a tela do Gerenciador de An&uacute;ncios em tempo real &mdash; &ldquo;aqui est&aacute; o que estamos rodando para um cliente hoje&rdquo;. Transpar&ecirc;ncia gera autoridade e curiosidade.</p></div></div>
+<div class="rec-card"><div class="rec-num">5</div><div class="rec-content"><h5>Pr&eacute;via do Pr&oacute;ximo Conte&uacute;do</h5><p>Publique um trecho do pr&oacute;ximo reel ou carrossel com a legenda &ldquo;amanh&atilde; tem conte&uacute;do bomba sobre [tema]&rdquo;. Cria antecipa&ccedil;&atilde;o e aumenta o retorno ao perfil.</p></div></div>
+<div class="rec-card"><div class="rec-num">6</div><div class="rec-content"><h5>Caixinha sobre Tr&aacute;fego e Lan&ccedil;amento</h5><p>Abra caixinha de perguntas semanalmente: &ldquo;Pode perguntar sobre tr&aacute;fego pago ou lan&ccedil;amento de cursos&rdquo;. Respostas viram conte&uacute;do para feed e qualificam leads no DM.</p></div></div>
+</div>
+</section>
+<section class="section">
+<h2 class="section-title">&#x1F3AF; Recomenda&ccedil;&otilde;es de Tr&aacute;fego Pago</h2>
+<div class="rec-grid">
+<div class="rec-card"><div class="rec-num" style="background:linear-gradient(135deg,#ef4444,#b91c1c);">1</div><div class="rec-content"><h5>Pausar &ldquo;Tr&aacute;fego - Insta&rdquo; &mdash; Realocar Budget</h5><p>CPM de R$42,55 e CTR de apenas 1,66% indicam criativo ou segmenta&ccedil;&atilde;o com problema grave. Pause imediatamente e redirecione os R$12,85 para a campanha de seguidores.</p></div></div>
+<div class="rec-card"><div class="rec-num" style="background:linear-gradient(135deg,#10b981,#059669);">2</div><div class="rec-content"><h5>Escalar &ldquo;[Tr&aacute;fego] [Insta] Seguidores&rdquo;</h5><p>Melhor campanha do per&iacute;odo: CPM R$11,82, CTR 4,03%, CPC R$0,29. Aumente o or&ccedil;amento di&aacute;rio em 20&ndash;30% a cada 3&ndash;4 dias sem alterar a segmenta&ccedil;&atilde;o para n&atilde;o quebrar o aprendizado.</p></div></div>
+<div class="rec-card"><div class="rec-num">3</div><div class="rec-content"><h5>Criar Campanha de Gera&ccedil;&atilde;o de Leads</h5><p>Crie uma campanha com formul&aacute;rio nativo do Instagram voltada a professores interessados em lan&ccedil;ar. Objetivo: capturar nome, e-mail e fase do projeto &mdash; leads mais quentes do que cliques.</p></div></div>
+<div class="rec-card"><div class="rec-num">4</div><div class="rec-content"><h5>Manter Tr&aacute;fego Ativo Todos os Dias</h5><p>Os 11 dias sem investimento geraram queda vis&iacute;vel no alcance total. Distribua o budget diariamente &mdash; mesmo R$5,00/dia mant&eacute;m a conta no radar do algoritmo.</p></div></div>
+<div class="rec-card"><div class="rec-num">5</div><div class="rec-content"><h5>Campanha de Awareness com Reels de Prova Social</h5><p>Impulsione os Reels de cases de clientes com objetivo de Reconhecimento de Marca. CPM mais barato e ideal para construir autoridade antes de converter. Teste com R$15&ndash;20/dia.</p></div></div>
+<div class="rec-card"><div class="rec-num gold">6</div><div class="rec-content"><h5>Criar Audi&ecirc;ncia de Retargeting</h5><p>Configure audi&ecirc;ncia personalizada com visitantes do perfil nos &uacute;ltimos 30 dias e pessoas que interagiram com os posts. Crie campanha de convers&atilde;o apenas para esse p&uacute;blico quente.</p></div></div>
+</div>
+</section>
+</div>
+<footer class="site-footer">
+<p>Relat&oacute;rio gerado para a <strong>Dash Digital</strong>. &nbsp;|&nbsp; @dashdgt &nbsp;|&nbsp; Per&iacute;odo: 14 abr &ndash; 13 mai 2026 &nbsp;|&nbsp; Dados: Instagram Insights + Meta Ads Manager</p>
+</footer>
 <script>
-const L=["14/04","15/04","16/04","17/04","18/04","19/04","20/04","21/04","22/04","23/04","24/04","25/04","26/04","27/04","28/04","29/04","30/04","01/05","02/05","03/05","04/05","05/05","06/05","07/05","08/05","09/05","10/05","11/05","12/05","13/05"];
-const Vi=[153,56,0,0,3,2,0,289,532,529,683,846,790,1250,929,811,1679,1120,670,1030,1376,1117,706,39,1,6,0,6,11,0];
-const Re=[119,48,0,0,2,1,0,131,171,202,244,411,654,875,720,647,1322,858,609,937,995,928,320,25,2,3,1,1,5,0];
-const Li=[6,0,0,0,0,0,0,7,7,14,7,38,13,16,18,9,9,19,6,12,26,22,231,0,0,0,0,0,0,0];
-const Co=[0,0,0,0,0,0,0,0,1,9,1,6,1,3,12,2,0,10,0,0,0,0,9,0,0,0,0,0,0,0];
-const Sa=[0,0,0,0,0,0,0,0,1,1,0,3,2,5,3,2,3,1,0,4,3,2,0,0,0,0,0,0,0,0];
-const Sh=[1,0,0,0,0,0,0,2,2,8,4,8,0,2,4,1,7,1,0,0,3,0,2,0,0,0,0,0,0,0];
-const Fo=[0,0,0,0,0,0,0,0,0,1,0,3,10,1,6,1,0,1,1,4,5,6,2,0,0,0,0,0,0,0];
-Chart.defaults.font={family:"'Segoe UI',system-ui,sans-serif",size:11};
-Chart.defaults.color='#4a5568';
-const go={responsive:true,maintainAspectRatio:false};
-const gs={x:{grid:{display:false},ticks:{maxTicksLimit:10}},y:{grid:{color:'rgba(0,63,124,0.07)'}}};
-// Views & Reach
-new Chart('cDailyVR',{type:'bar',data:{labels:L,datasets:[{label:'Views',data:Vi,backgroundColor:'rgba(0,63,124,0.18)',borderColor:'#003f7c',borderWidth:1.5,borderRadius:3,order:2},{label:'Alcance',data:Re,type:'line',borderColor:'#f8b940',borderWidth:2,pointRadius:0,fill:false,tension:0.4,order:1}]},options:{...go,plugins:{legend:{position:'top',labels:{boxWidth:11,padding:14}},tooltip:{mode:'index',intersect:false}},scales:gs}});
-// Stacked interactions
-new Chart('cDailyI',{type:'bar',data:{labels:L,datasets:[{label:'Curtidas',data:Li,backgroundColor:'rgba(0,63,124,0.7)',stack:'s'},{label:'Comentários',data:Co,backgroundColor:'rgba(248,185,64,0.85)',stack:'s'},{label:'Saves',data:Sa,backgroundColor:'rgba(16,185,129,0.7)',stack:'s'},{label:'Shares',data:Sh,backgroundColor:'rgba(99,102,241,0.65)',stack:'s'}]},options:{...go,plugins:{legend:{position:'top',labels:{boxWidth:11,padding:10}},tooltip:{mode:'index',intersect:false}},scales:{...gs,x:{...gs.x,ticks:{maxTicksLimit:8}},y:{...gs.y,stacked:true}}}});
-// Followers
-new Chart('cDailyF',{type:'line',data:{labels:L,datasets:[{label:'Novos seguidores',data:Fo,borderColor:'#f8b940',backgroundColor:'rgba(248,185,64,0.13)',borderWidth:2.5,pointRadius:3,pointBackgroundColor:'#f8b940',fill:true,tension:0.4}]},options:{...go,plugins:{legend:{display:false},tooltip:{mode:'index',intersect:false}},scales:{...gs,x:{...gs.x,ticks:{maxTicksLimit:8}}}}});
-// Gender
-new Chart('cGender',{type:'doughnut',data:{labels:['Masculino','Feminino','Indefinido'],datasets:[{data:[89,87,35],backgroundColor:['#003f7c','#f8b940','#e2e8f2'],borderWidth:2,hoverOffset:6}]},options:{...go,cutout:'60%',plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:12}}}}});
-// Age
-new Chart('cAge',{type:'bar',data:{labels:['18–24','25–34','35–44','45–54','55–64','65+'],datasets:[{data:[10,76,63,28,22,12],backgroundColor:['rgba(0,63,124,0.25)','#003f7c','#1a5a9a','rgba(0,63,124,0.5)','rgba(0,63,124,0.35)','rgba(0,63,124,0.2)'],borderRadius:5}]},options:{...go,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,63,124,0.07)'}},y:{grid:{display:false}}}}});
-// Country
-new Chart('cCountry',{type:'bar',data:{labels:['🇧🇷 Brasil','🌍 Outros'],datasets:[{data:[208,3],backgroundColor:['#003f7c','rgba(0,63,124,0.3)'],borderRadius:5}]},options:{...go,indexAxis:'y',plugins:{legend:{display:false}},scales:{x:{grid:{color:'rgba(0,63,124,0.07)'}},y:{grid:{display:false}}}}});
-// Format engagement avg
-new Chart('cFmtEng',{type:'bar',data:{labels:['Reels','Imagens','Carrosséis'],datasets:[{label:'Eng. médio',data:[32.2,20.0,17.8],backgroundColor:['#003f7c','#f8b940','rgba(0,63,124,0.45)'],borderRadius:7}]},options:{...go,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{grid:{color:'rgba(0,63,124,0.07)'}}}}});
-// Format distribution
-new Chart('cFmtDist',{type:'doughnut',data:{labels:['Reels (6)','Carrosséis (4)','Imagens (3)'],datasets:[{data:[6,4,3],backgroundColor:['#003f7c','#f8b940','rgba(0,63,124,0.4)'],borderWidth:2,hoverOffset:6}]},options:{...go,cutout:'55%',plugins:{legend:{position:'bottom',labels:{boxWidth:11,padding:12}}}}});
-// Scatter
-const posts=[{x:167,y:10,t:'Reel'},{x:169,y:15,t:'Carrossel'},{x:208,y:34,t:'Reel'},{x:194,y:33,t:'Reel'},{x:152,y:19,t:'Carrossel'},{x:350,y:56,t:'Reel'},{x:212,y:17,t:'Reel'},{x:309,y:43,t:'Reel'},{x:98,y:19,t:'Imagem'},{x:159,y:21,t:'Carrossel'},{x:138,y:28,t:'Imagem'},{x:115,y:16,t:'Carrossel'},{x:111,y:13,t:'Imagem'}];
-const sc=posts.map(p=>({x:p.x,y:p.y}));
-new Chart('cScatter',{type:'scatter',data:{datasets:[{label:'Posts',data:sc,backgroundColor:posts.map(p=>p.t==='Reel'?'rgba(0,63,124,0.75)':p.t==='Carrossel'?'rgba(248,185,64,0.8)':'rgba(16,185,129,0.75)'),pointRadius:8,pointHoverRadius:10}]},options:{...go,plugins:{legend:{display:false},tooltip:{callbacks:{label:(c)=>{const p=posts[c.dataIndex];return `${p.t} | Alcance: ${p.x} | Eng: ${p.y}`}}}},scales:{x:{title:{display:true,text:'Alcance',font:{size:11}},grid:{color:'rgba(0,63,124,0.07)'}},y:{title:{display:true,text:'Engajamento',font:{size:11}},grid:{color:'rgba(0,63,124,0.07)'}}}}});
+var L=["14/04","15/04","16/04","17/04","18/04","19/04","20/04","21/04","22/04","23/04","24/04","25/04","26/04","27/04","28/04","29/04","30/04","01/05","02/05","03/05","04/05","05/05","06/05","07/05","08/05","09/05","10/05","11/05","12/05","13/05"];
+var Vi=[153,56,0,0,3,2,0,289,532,529,683,846,790,1250,929,811,1679,1120,670,1030,1376,1117,706,39,1,6,0,6,11,0];
+var Re=[119,48,0,0,2,1,0,131,171,202,244,411,654,875,720,647,1322,858,609,937,995,928,320,25,2,3,1,1,5,0];
+var Ro=[119,48,0,0,2,1,0,131,171,173,190,265,128,254,227,145,161,220,0,0,169,128,0,25,2,3,1,1,5,0];
+var Rp=[0,0,0,0,0,0,0,0,0,29,54,146,526,621,493,502,1161,638,637,961,826,800,379,0,0,0,0,0,0,0];
+var Li=[6,0,0,0,0,0,0,7,7,14,7,38,13,16,18,9,9,19,6,12,26,22,231,0,0,0,0,0,0,0];
+var Co=[0,0,0,0,0,0,0,0,1,9,1,6,1,3,12,2,0,10,0,0,0,0,9,0,0,0,0,0,0,0];
+var Sa=[0,0,0,0,0,0,0,0,1,1,0,3,2,5,3,2,3,1,0,4,3,2,0,0,0,0,0,0,0,0];
+var Sh=[1,0,0,0,0,0,0,2,2,8,4,8,0,2,4,1,7,1,0,0,3,0,2,0,0,0,0,0,0,0];
+var Fo=[0,0,0,0,0,0,0,0,0,1,0,3,10,1,6,1,0,1,1,4,5,6,2,0,0,0,0,0,0,0];
+var Sp=[0,0,0,0,0,0,0,0,0,1.94,8.18,7.01,11.43,10.36,10.46,9.18,11.13,8.65,9.37,10.73,10.76,10.56,5.84,0,0,0,0,0,0,0];
+Chart.defaults.font.family="'Segoe UI',system-ui,sans-serif";
+Chart.defaults.font.size=11;
+Chart.defaults.color='#6b7280';
+Chart.defaults.plugins.legend.labels.usePointStyle=true;
+Chart.defaults.plugins.legend.labels.pointStyleWidth=10;
+Chart.defaults.plugins.legend.labels.padding=16;
+new Chart(document.getElementById('cDailyVR'),{type:'bar',data:{labels:L,datasets:[{label:'Views',data:Vi,backgroundColor:'rgba(26,90,154,0.6)',borderColor:'#1a5a9a',borderWidth:1,order:2,yAxisID:'y'},{label:'Alcance Total',data:Re,type:'line',borderColor:'#f8b940',backgroundColor:'rgba(248,185,64,0.12)',borderWidth:2.5,pointRadius:3,pointHoverRadius:5,fill:false,tension:0.35,order:1,yAxisID:'y'}]},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'index',intersect:false},plugins:{legend:{position:'top'}},scales:{x:{ticks:{maxRotation:45,font:{size:10}},grid:{display:false}},y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'}}}}});
+new Chart(document.getElementById('cDailyI'),{type:'bar',data:{labels:L,datasets:[{label:'Likes',data:Li,backgroundColor:'rgba(0,63,124,0.75)',stack:'s'},{label:'Coments',data:Co,backgroundColor:'rgba(248,185,64,0.75)',stack:'s'},{label:'Saves',data:Sa,backgroundColor:'rgba(16,185,129,0.75)',stack:'s'},{label:'Shares',data:Sh,backgroundColor:'rgba(249,115,22,0.75)',stack:'s'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{x:{stacked:true,ticks:{maxRotation:45,font:{size:10}},grid:{display:false}},y:{stacked:true,beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'}}}}});
+new Chart(document.getElementById('cDailyF'),{type:'line',data:{labels:L,datasets:[{label:'Novos Seguidores',data:Fo,borderColor:'#10b981',backgroundColor:'rgba(16,185,129,0.12)',borderWidth:2.5,pointRadius:4,pointHoverRadius:6,fill:true,tension:0.35}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:45,font:{size:10}},grid:{display:false}},y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'},ticks:{stepSize:1}}}}});
+new Chart(document.getElementById('cReachSplit'),{type:'bar',data:{labels:L,datasets:[{label:'Organico',data:Ro,backgroundColor:'rgba(26,90,154,0.6)',stack:'s'},{label:'Pago',data:Rp,backgroundColor:'rgba(248,185,64,0.75)',stack:'s'}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'}},scales:{x:{stacked:true,ticks:{maxRotation:45,font:{size:10}},grid:{display:false}},y:{stacked:true,beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'}}}}});
+new Chart(document.getElementById('cSpend'),{type:'bar',data:{labels:L,datasets:[{label:'Gasto R$',data:Sp,backgroundColor:Sp.map(function(v){return v>0?'rgba(248,185,64,0.75)':'rgba(0,0,0,0)';}),borderColor:Sp.map(function(v){return v>0?'#d99a20':'transparent';}),borderWidth:1,borderRadius:4}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{ticks:{maxRotation:45,font:{size:10}},grid:{display:false}},y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'},ticks:{callback:function(v){return'R$'+v.toFixed(0);}}}}}});
+new Chart(document.getElementById('cGender'),{type:'doughnut',data:{labels:['Masculino (42%)','Feminino (41%)','Indefinido (17%)'],datasets:[{data:[89,87,35],backgroundColor:['#003f7c','#f8b940','#94a3b8'],borderColor:'#fff',borderWidth:3,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'bottom',labels:{font:{size:11}}}}}});
+new Chart(document.getElementById('cAge'),{type:'bar',data:{labels:['18-24','25-34','35-44','45-54','55-64','65+'],datasets:[{label:'Seguidores',data:[10,76,63,28,22,12],backgroundColor:['rgba(26,90,154,0.6)','rgba(0,63,124,0.75)','rgba(0,63,124,0.75)','rgba(26,90,154,0.6)','rgba(148,163,184,0.7)','rgba(148,163,184,0.7)'],borderColor:['#1a5a9a','#003f7c','#003f7c','#1a5a9a','#94a3b8','#94a3b8'],borderWidth:1,borderRadius:6}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'}},y:{grid:{display:false}}}}});
+new Chart(document.getElementById('cCountry'),{type:'bar',data:{labels:['Brasil','Outros'],datasets:[{label:'Seguidores',data:[208,3],backgroundColor:['rgba(0,63,124,0.75)','rgba(148,163,184,0.7)'],borderColor:['#003f7c','#94a3b8'],borderWidth:1,borderRadius:8}]},options:{indexAxis:'y',responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'}},y:{grid:{display:false}}}}});
+new Chart(document.getElementById('cFmtEng'),{type:'bar',data:{labels:['Reels','Carrosseis','Imagens'],datasets:[{label:'Engajamento Medio',data:[32.2,17.8,20.0],backgroundColor:['rgba(0,63,124,0.75)','rgba(248,185,64,0.75)','rgba(16,185,129,0.75)'],borderColor:['#003f7c','#d99a20','#10b981'],borderWidth:1.5,borderRadius:8}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{x:{grid:{display:false}},y:{beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'}}}}});
+new Chart(document.getElementById('cFmtDist'),{type:'doughnut',data:{labels:['Reels (6 posts)','Carrosseis (4 posts)','Imagens (3 posts)'],datasets:[{data:[6,4,3],backgroundColor:['#003f7c','#f8b940','#10b981'],borderColor:'#fff',borderWidth:3,hoverOffset:8}]},options:{responsive:true,maintainAspectRatio:false,cutout:'60%',plugins:{legend:{position:'bottom',labels:{font:{size:11}}}}}});
+(function(){var raw=[{x:167,y:10,t:'Reel'},{x:169,y:15,t:'Carrossel'},{x:208,y:34,t:'Reel'},{x:194,y:33,t:'Reel'},{x:152,y:19,t:'Carrossel'},{x:350,y:56,t:'Reel'},{x:212,y:17,t:'Reel'},{x:309,y:43,t:'Reel'},{x:98,y:19,t:'Imagem'},{x:159,y:21,t:'Carrossel'},{x:138,y:28,t:'Imagem'},{x:115,y:16,t:'Carrossel'},{x:111,y:13,t:'Imagem'}];var cm={'Reel':'#003f7c','Carrossel':'#f8b940','Imagem':'#10b981'};var types=['Reel','Carrossel','Imagem'];var ds=types.map(function(t){return{label:t+'s',data:raw.filter(function(d){return d.t===t;}).map(function(d){return{x:d.x,y:d.y};}),backgroundColor:cm[t]+'cc',pointRadius:9,pointHoverRadius:12,borderColor:cm[t],borderWidth:1.5};});new Chart(document.getElementById('cScatter'),{type:'scatter',data:{datasets:ds},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{position:'top'},tooltip:{callbacks:{label:function(c){return'Alcance: '+c.parsed.x+' | Eng: '+c.parsed.y;}}}},scales:{x:{title:{display:true,text:'Alcance Organico',font:{size:12}},grid:{color:'rgba(0,0,0,0.05)'}},y:{title:{display:true,text:'Engajamento Total',font:{size:12}},beginAtZero:true,grid:{color:'rgba(0,0,0,0.05)'}}}}});})();
 </script>
 </body>
 </html>
