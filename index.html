@@ -140,18 +140,18 @@ body{background:var(--bg);color:var(--tx);font-family:'Segoe UI',system-ui,sans-
   <div class="cd">
     <div class="ct">Visualizações e Alcance por Dia (últimos 30 dias)</div>
     <div class="cs">Lacunas visíveis em 16–20/abr e 07–12/mai — dias de inatividade total</div>
-    <canvas id="cDailyVR" height="220"></canvas>
+    <div style="position:relative;height:220px"><canvas id="cDailyVR"></canvas></div>
   </div>
   <div class="g2">
     <div class="cd nm">
       <div class="ct">Interações Diárias por Tipo</div>
       <div class="cs">Curtidas, comentários, saves e compartilhamentos</div>
-      <canvas id="cDailyI" height="210"></canvas>
+      <div style="position:relative;height:210px"><canvas id="cDailyI"></canvas></div>
     </div>
     <div class="cd nm">
       <div class="ct">Novos Seguidores por Dia</div>
       <div class="cs">Total: +41 no período</div>
-      <canvas id="cDailyF" height="210"></canvas>
+      <div style="position:relative;height:210px"><canvas id="cDailyF"></canvas></div>
     </div>
   </div>
 
@@ -165,17 +165,17 @@ body{background:var(--bg);color:var(--tx);font-family:'Segoe UI',system-ui,sans-
     <div class="cd nm">
       <div class="ct">Distribuição por Gênero</div>
       <div class="cs">Equilíbrio masculino / feminino</div>
-      <canvas id="cGender" height="200"></canvas>
+      <div style="position:relative;height:200px"><canvas id="cGender"></canvas></div>
     </div>
     <div class="cd nm">
       <div class="ct">Faixa Etária dos Seguidores</div>
       <div class="cs">25–44 anos = 65,9% ✅</div>
-      <canvas id="cAge" height="200"></canvas>
+      <div style="position:relative;height:200px"><canvas id="cAge"></canvas></div>
     </div>
     <div class="cd nm">
       <div class="ct">Países de Origem</div>
       <div class="cs">98,6% brasileiros</div>
-      <canvas id="cCountry" height="200"></canvas>
+      <div style="position:relative;height:200px"><canvas id="cCountry"></canvas></div>
     </div>
   </div>
 
@@ -185,12 +185,12 @@ body{background:var(--bg);color:var(--tx);font-family:'Segoe UI',system-ui,sans-
     <div class="cd nm">
       <div class="ct">Engajamento Médio por Formato</div>
       <div class="cs">Reels lideram com folga</div>
-      <canvas id="cFmtEng" height="200"></canvas>
+      <div style="position:relative;height:200px"><canvas id="cFmtEng"></canvas></div>
     </div>
     <div class="cd nm">
       <div class="ct">Distribuição de Posts por Formato</div>
       <div class="cs">13 posts no período</div>
-      <canvas id="cFmtDist" height="200"></canvas>
+      <div style="position:relative;height:200px"><canvas id="cFmtDist"></canvas></div>
     </div>
   </div>
   <div class="ccl">
@@ -218,7 +218,7 @@ body{background:var(--bg);color:var(--tx);font-family:'Segoe UI',system-ui,sans-
   <div class="cd">
     <div class="ct">Comparativo de Performance dos Posts — Alcance vs Engajamento</div>
     <div class="cs">Cada ponto representa um post. Posts no canto superior direito são os mais eficientes.</div>
-    <canvas id="cScatter" height="260"></canvas>
+    <div style="position:relative;height:260px"><canvas id="cScatter"></canvas></div>
   </div>
 
   <!-- ANÁLISE ESTRATÉGICA -->
